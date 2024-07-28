@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uniWEB - University Recommendation System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .container-fluid {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        .navbar {
+            background-color: #333;
+            border-bottom: 2px solid #555;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #fff !important;
+            transition: color 0.3s;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #bbb !important;
+        }
+        .banner {
+            background-image: url("https://www.example.com/images/banner.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .banner h1 {
+            font-size: 4em;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .banner p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .content-section {
+            padding: 60px 20px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: background-color 0.3s;
+        }
+        .content-section:nth-child(even) {
+            background-color: #fff;
+        }
+        .content-section:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+        .university-options {
+            display: flex;
+            width: 100%;
+            height: 50vh;
+        }
+        .option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .option img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+        .option .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        .option a {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .option a:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            border-top: 2px solid #555;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .btn-primary, .btn-secondary {
+            border: none;
+            transition: transform 0.3s;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: scale(1.05);
+        }
+        .interactive {
+            transition: transform 0.3s;
+        }
+        .interactive:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 3em;
+            }
+            .banner p {
+                font-size: 1.2em;
+            }
+            .university-options {
+                flex-direction: column;
+                height: auto;
+            }
+            .option {
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="#">uniWEB</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/undergraduate">Undergraduate University</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/graduate">Graduate University</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faq">FAQ</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="banner">
+            <h1>Welcome to uniWEB</h1>
+            <p>Your Personalized University Recommendation System</p>
+        </div>
+
+        <div class="content-section interactive">
+            <h2>Choose Your Path</h2>
+            <div class="university-options">
+                <div class="option">
+                    <img src="https://www.example.com/images/undergraduate.jpg" alt="Undergraduate University">
+                    <div class="content">
+                        <a href="/undergraduate" role="button">Undergraduate University</a>
+                    </div>
+                </div>
+                <div class="option">
+                    <img src="https://www.example.com/images/graduate.jpg" alt="Graduate University">
+                    <div class="content">
+                        <a href="/graduate" role="button">Graduate University</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section interactive">
+            <h2>Our Mission</h2>
+            <p>At uniWEB, we aim to provide personalized university recommendations based on your unique profile. Whether you are looking for an undergraduate or graduate program, our system helps you find the best fit for your academic and professional goals.</p>
+        </div>
+
+        <div class="content-section interactive">
+            <h2>Featured Universities</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://www.example.com/images/university1.jpg" class="img-fluid" alt="University 1">
+                    <h4>University 1</h4>
+                    <p>Brief description of University 1.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://www.example.com/images/university2.jpg" class="img-fluid" alt="University 2">
+                    <h4>University 2</h4>
+                    <p>Brief description of University 2.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://www.example.com/images/university3.jpg" class="img-fluid" alt="University 3">
+                    <h4>University 3</h4>
+                    <p>Brief description of University 3.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section interactive">
+            <h2>Popular Courses</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Course 1</h4>
+                    <p>Brief description of Course 1.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Course 2</h4>
+                    <p>Brief description of Course 2.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Course 3</h4>
+                    <p>Brief description of Course 3.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section interactive">
+            <h2>Student Testimonials</h2>
+            <blockquote class="blockquote">
+                <p class="mb-0">"uniWEB helped me find the perfect university for my undergraduate studies. The process was simple and the recommendations were spot on!"</p>
+                <footer class="blockquote-footer">Jane Doe, <cite title="Source Title">Student</cite></footer>
+            </blockquote>
+            <blockquote class="blockquote">
+                <p class="mb-0">"Thanks to uniWEB, I was able to choose the right graduate program that aligned with my career goals."</p>
+                <footer class="blockquote-footer">John Smith, <cite title="Source Title">Graduate</cite></footer>
+            </blockquote>
+        </div>
+
+        <div class="content-section interactive">
+            <h2>Latest News and Updates</h2>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Blog Post 1</a>
+                <a href="#" class="list-group-item list-group-item-action">Blog Post 2</a>
+                <a href="#" class="list-group-item list-group-item-action">Blog Post 3</a>
+            </div>
+        </div>
+
+        <div class="content-section interactive">
+            <h2>Scholarship Highlights</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Scholarship 1</h4>
+                    <p>Brief information on Scholarship 1.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Scholarship 2</h4>
+                    <p>Brief information on Scholarship 2.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Scholarship 3</h4>
+                    <p>Brief information on Scholarship 3.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section interactive">
+            <h2>How It Works</h2>
+            <p>Step-by-step guide to using the portal:</p>
+            <ol>
+                <li>Create an account and complete your profile.</li>
+                <li>Receive personalized university recommendations.</li>
+                <li>Apply to universities through our portal.</li>
+            </ol>
+        </div>
+
+        <div class="content-section interactive">
+            <h2>Community Highlights</h2>
+            <p>Join our community to participate in study groups, forums, and mentorship programs.</p>
+            <a href="#" class="btn btn-primary">Join Now</a>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2024 uniWEB. All rights reserved.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/faq">FAQ</a></li>
+                <li class="list-inline-item"><a href="/support">Support</a></li>
+                <li class="list-inline-item"><a href="/terms">Terms of Service</a></li>
+                <li class="list-inline-item"><a href="/privacy">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-kwmEHTfZDAu9O2zcA3aZYhlST9gUoF4ZIvvlftD1jrxD09hiJjiLgph7sjOhW96G" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkYj6s8np6YkA8lkzE7dbb5Xtd3N4kpKkv8C2Q2kWXJ8j8L8g9nF4alj9I2a" crossorigin="anonymous"></script>
+</body>
+</html>

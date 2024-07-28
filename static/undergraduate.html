@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Recommendation Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .navbar {
+            background-color: #333;
+            border-bottom: 2px solid #555;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #fff !important;
+            transition: color 0.3s;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #bbb !important;
+        }
+        .jumbotron {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 5px;
+        }
+        .jumbotron h3 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .jumbotron h4 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .jumbotron input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .jumbotron input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .jumbotron input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 2px solid #555;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <a class="navbar-brand" href="#">uniWEB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/undergraduate">Undergraduate College</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/graduate">Graduate College</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/faq">FAQ</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h3>Undergraduate Universities</h3>
+        <h4>Please Enter Your SAT Score and Maximum Tuition Fees</h4>
+        <form action="/undergraduatealgo" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="sat">SAT Score:</label>
+                <input type="text" id="sat" name="sat" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="tution">Maximum Tuition Fees:</label>
+                <input type="text" id="tution" name="tution" class="form-control">
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+
+<footer class="footer fixed-bottom">
+    <p>&copy; 2024 uniWEB. All rights reserved.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-kwmEHTfZDAu9O2zcA3aZYhlST9gUoF4ZIvvlftD1jrxD09hiJjiLgph7sjOhW96G" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkYj6s8np6YkA8lkzE7dbb5Xtd3N4kpKkv8C2Q2kWXJ8j8L8g9nF4alj9I2a" crossorigin="anonymous"></script>
+
+<script>
+    function validateForm() {
+        var sat = document.getElementById("sat").value;
+        var tuition = document.getElementById("tution").value;
+
+        if (!isInteger(sat) || sat < 400 || sat > 1600) {
+            alert("Please enter a valid SAT score between 400 and 1600.");
+            return false;
+        }
+
+        if (!isInteger(tuition) || tuition < 0) {
+            alert("Please enter a valid maximum tuition fee.");
+            return false;
+        }
+
+        return true;
+    }
+
+    function isInteger(value) {
+        return /^\d+$/.test(value);
+    }
+</script>
+
+</body>
+</html>
